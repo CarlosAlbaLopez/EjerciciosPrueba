@@ -15,3 +15,23 @@
  */
 
 'use strict';
+
+const url = 'https://www.el-tiempo.net/api/json/v1/provincias/27/municipios';
+
+async function getMunicipiosFromProvinciaLugo(url) {
+  const municipios = await fetch(url).then((response) => {
+    return response.json();
+  });
+
+  let result = [];
+
+  for (let i = 0; i < Object.values(municipios).length; i++) {
+    result.push(Object.values(municipios)[i].NOMBRE);
+  }
+
+  result = result.sort().reverse();
+
+  console.log(result);
+}
+
+getMunicipiosFromProvinciaLugo(url);

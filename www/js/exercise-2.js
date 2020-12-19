@@ -51,3 +51,23 @@ let data = `  "id", "m2", "antiguedad", "habitaciones", "baños", "amueblado", "
 148, 160, 9,  5, 3, true,  true
 149, 60, 11,  1, 1, false,  true
    `;
+
+function arrangeData(data) {
+  let splittedData = data.split(/\n/);
+
+  let result = [];
+
+  for (let i = 1; i < splittedData.length - 1; i++) {
+    result.push(splittedData[i].split(','));
+  }
+
+  for (let i = 0; i < result.length; i++) {
+    for (let j = 0; j < result[i].length; j++) {
+      result[i][j] = result[i][j].trim();
+    }
+  }
+
+  return result;
+}
+
+console.log(arrangeData(data));

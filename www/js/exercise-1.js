@@ -16,4 +16,18 @@
  *
  */
 
+'use strict';
+
 const text = 'Lorem Ipsum Dolor Sit Amet Consectetur, ¡Adipisicing Elit!.';
+
+function prepareText(text) {
+  let regex = /[,¡!.]/g;
+
+  return text.replace(regex, '').toLowerCase();
+}
+
+function arrangeText(text) {
+  return prepareText(text).split(' ').sort();
+}
+
+console.log(arrangeText(text));

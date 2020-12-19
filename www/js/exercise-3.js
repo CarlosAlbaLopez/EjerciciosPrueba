@@ -148,3 +148,113 @@ const cars = [
     model: 'Uno',
   },
 ];
+
+// 1
+function getTotalAge() {
+  const result = persons.reduce((accumulator, person) => {
+    return accumulator + person.age;
+  }, 0);
+
+  console.log(result);
+}
+
+getTotalAge();
+
+// 2
+function getFrenchTotalAge() {
+  const francesas = persons
+    .filter((person) => {
+      return person.country === 'FR';
+    })
+    .reduce((accumulator, person) => {
+      return accumulator + person.age;
+    }, 0);
+
+  console.log(francesas);
+}
+
+getFrenchTotalAge();
+
+// 3
+function getPetsNames() {
+  const result = persons.map((person) => {
+    return person.pet.name;
+  });
+
+  console.log(result);
+}
+
+getPetsNames();
+
+// 4
+function getPersonsWithCat() {
+  const result = persons.filter((person) => {
+    return person.pet.type === 'gato';
+  });
+
+  console.log(result);
+}
+
+getPersonsWithCat();
+
+// 5
+function getSpanishCars() {
+  const spanishWithCars = persons
+    .filter((person) => {
+      return person.country === 'ES';
+    })
+    .map((person) => {
+      const personCopy = { ...person };
+      const car = cars.find((car) => {
+        return person.car === car.id;
+      });
+      personCopy.carData = car;
+      return personCopy;
+    });
+
+  const result = [];
+
+  for (let i = 0; i < spanishWithCars.length; i++) {
+    result.push(spanishWithCars[i].carData);
+  }
+
+  console.log(result);
+}
+
+getSpanishCars();
+
+// 6
+function getPersonsWithFord() {
+  const result = persons
+    .map((person) => {
+      const personCopy = { ...person };
+      const car = cars.find((car) => {
+        return person.car === car.id;
+      });
+      personCopy.car = car;
+      return personCopy;
+    })
+    .filter((person) => {
+      return person.car.brand === 'Ford';
+    });
+
+  console.log(result);
+}
+
+getPersonsWithFord();
+
+// 7
+function getPersonsWithCarData() {
+  const result = persons.map((person) => {
+    const personCopy = { ...person };
+    const car = cars.find((car) => {
+      return person.car === car.id;
+    });
+    personCopy.car = car;
+    return personCopy;
+  });
+
+  console.log(result);
+}
+
+getPersonsWithCarData();
